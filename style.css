@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.calculator-container {
+    padding: 20px;
+}
+
+.calculator {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(102, 126, 234, 0.4);
+    width: 320px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.display-section {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.display {
+    width: 100%;
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+    border: 2px solid #667eea;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 32px;
+    text-align: right;
+    color: #00d4ff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.display:focus {
+    outline: none;
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.4);
+}
+
+.previous-operand {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    font-size: 14px;
+    color: #ff6b6b;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Number Buttons - Blue gradient */
+.btn-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-number:hover {
+    background: linear-gradient(135deg, #7c8ff0 0%, #8a5ab5 100%);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Zero Button - spans 2 columns */
+.btn-zero {
+    grid-column: span 2;
+}
+
+/* Operator Buttons - Red/Orange gradient */
+.btn-operator {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    box-shadow: 0 6px 15px rgba(245, 87, 108, 0.4);
+}
+
+.btn-operator:hover {
+    background: linear-gradient(135deg, #f5a5ff 0%, #ff7885 100%);
+    box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+}
+
+/* Equals Button - Green gradient */
+.btn-equals {
+    grid-column: span 1;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    box-shadow: 0 6px 15px rgba(79, 172, 254, 0.4);
+    font-size: 24px;
+}
+
+.btn-equals:hover {
+    background: linear-gradient(135deg, #6fb7ff 0%, #33fcff 100%);
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.6);
+}
+
+/* Function Buttons (AC, DEL, %) - Yellow/Orange gradient */
+.btn-function {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: #333;
+    box-shadow: 0 6px 15px rgba(250, 112, 154, 0.4);
+}
+
+.btn-function:hover {
+    background: linear-gradient(135deg, #ff89b3 100%, #ffeb66 0%);
+    box-shadow: 0 8px 25px rgba(250, 112, 154, 0.6);
+}
+
+/* Advanced Function Buttons - Teal gradient */
+.btn-function-advanced {
+    background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 100%);
+    color: white;
+    box-shadow: 0 6px 15px rgba(31, 162, 255, 0.4);
+    font-size: 16px;
+}
+
+.btn-function-advanced:hover {
+    background: linear-gradient(135deg, #4bb7ff 0%, #3ae5ff 100%);
+    box-shadow: 0 8px 25px rgba(31, 162, 255, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .calculator {
+        width: 100%;
+        max-width: 320px;
+        padding: 15px;
+    }
+
+    .display {
+        font-size: 28px;
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .buttons-grid {
+        gap: 8px;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+    }
+    50% {
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.7);
+    }
+    100% {
+        box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+    }
+}
+
+.btn:active {
+    animation: pulse 0.4s ease-out;
+}
