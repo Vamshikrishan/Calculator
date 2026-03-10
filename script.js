@@ -152,7 +152,7 @@ class Calculator {
     }
 
     updateDisplay() {
-        this.displayElement.innerText = this.currentOperand;
+        this.displayElement.value = this.currentOperand || '0';
         
         // Display previous operand with operation
         const previousDisplay = document.getElementById('previous-operand');
